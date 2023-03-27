@@ -54,6 +54,8 @@ The process is as follows:
 1. The loan parameters are clamped to acceptable ranges and the person's credit modifier is found.
 2. A credit score is calculated using the best circumstances. If it is less than 1, then any loan is denied.
 3. The maximum allowed loan amount is calculated for different periods, starting from the requested period.
+The maximum amount is found by setting the credit score to 1 and deriving the loan amount from the original formula.
+$$1 = \frac{creditModifier * loanPeriod}{loanAmount} => maxLoanAmount = creditModifier * loanPeriod$$
 If the maximum amount is larger or equal to the requested amount, then it is approved. Otherwise, the loan period
 is increased. In other words, the system tries to find the minimum period required for the requested amount and then the
 maximum amount that can be borrowed in that period. This ensures that the client gets an offer that matches their needs.
