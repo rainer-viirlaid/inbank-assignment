@@ -58,7 +58,7 @@ The maximum amount is found by setting the credit score to 1 and deriving the lo
 $$1 = \frac{creditModifier * loanPeriod}{loanAmount} => maxLoanAmount = creditModifier * loanPeriod$$
 If the maximum amount is larger or equal to the requested amount, then it is approved. Otherwise, the loan period
 is increased. In other words, the system tries to find the minimum period required for the requested amount and then the
-maximum amount that can be borrowed in that period. This ensures that the client gets an offer that matches their needs.
+maximum amount that can be borrowed in that period. This ensures that the client gets an offer that matches their needs as closely as possible.
 4. If the requested amount cannot be approved (even over the longest allowed period), then the largest allowed loan is offered. 
 
 The application uses a database to store people and credit segments. Each person has a unique personal code and a reference
