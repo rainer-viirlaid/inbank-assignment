@@ -7,8 +7,8 @@ The request body should have the following format:
 ```json
 {
   "personalCode": "Personal code",
-  "loanAmount": Desired amount (integer),
-  "loanPeriod": Desired period (integer)
+  "loanAmount": "Desired amount (integer)",
+  "loanPeriod": "Desired period (integer)"
 }
 ```
 
@@ -24,8 +24,8 @@ For example:
 The response will have the following format:
 ```json
 {
-  "approvedLoanPeriod": Approved loan period (integer),
-  "approvedLoanAmount": Approved amount (integer)
+  "approvedLoanPeriod": "Approved loan period (integer)",
+  "approvedLoanAmount": "Approved amount (integer)"
 }
 ```
 
