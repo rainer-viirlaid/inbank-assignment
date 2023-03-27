@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="27.03.2023 rainer viirlaid 1" author="rainer viirlaid">
+        <createTable tableName="credit_segment">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="pk_credit_segment" />
+            </column>
+            <column name="segment_name" type="varchar(50)" >
+                <constraints nullable="false" unique="true" uniqueConstraintName="ak_credit_segment_name" />
+            </column>
+            <column name="credit_modifier" type="integer" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="person">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="pk_person" />
+            </column>
+            <column name="personal_code" type="varchar(255)" >
+                <constraints nullable="false" unique="true" uniqueConstraintName="ak_person_personal_code" />
+            </column>
+            <column name="credit_segment_id" type="integer" >
+                <constraints nullable="false" foreignKeyName="fk_person_credit_segment" referencedTableName="credit_segment" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="27.03.2023 rainer viirlaid 2" author="rainer viirlaid">
+        <sql>
+            INSERT INTO credit_segment (segment_name, credit_modifier) VALUES ('debt', 0);
+            INSERT INTO credit_segment (segment_name, credit_modifier) VALUES ('segment 1', 100);
+            INSERT INTO credit_segment (segment_name, credit_modifier) VALUES ('segment 2', 300);
+            INSERT INTO credit_segment (segment_name, credit_modifier) VALUES ('segment 3', 1000);
+
+            INSERT INTO person (personal_code, credit_segment_id) VALUES ('49002010965', 1);
+            INSERT INTO person (personal_code, credit_segment_id) VALUES ('49002010976', 2);
+            INSERT INTO person (personal_code, credit_segment_id) VALUES ('49002010987', 3);
+            INSERT INTO person (personal_code, credit_segment_id) VALUES ('49002010998', 4);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
