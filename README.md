@@ -1,7 +1,7 @@
 
 # Endpoint
 
-The endpoint for requesting a loan offer is `/loan`
+The endpoint for requesting a loan offer is:  POST `/loan`
 
 The request body should have the following format:
 ```json
