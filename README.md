@@ -1,6 +1,6 @@
 # Frontend
 
-The frontend application can be found here: https://github.com/rainer-viirlaid/inbank-assignment-frontend
+This repo contains the backend program. The frontend application can be found here: https://github.com/rainer-viirlaid/inbank-assignment-frontend
 
 # Endpoint
 
